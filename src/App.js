@@ -13,6 +13,11 @@ const App = () => {
       <div className="container">
         <Switch>
           <Route exact path="/" render={() => <Redirect to="/categories" />} />
+          <Route
+            exact
+            path="/mealdb"
+            render={() => <Redirect to="/categories" />}
+          />
           <Route path="/categories" component={Categories} />
           <Route path="/category/:category" component={Category} />
           <Route path="/countries" component={Areas} />
