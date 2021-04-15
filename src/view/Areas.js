@@ -4,7 +4,7 @@ const areasURL = "https://www.themealdb.com/api/json/v1/1/list.php?a=list";
 
 const Areas = () => (
   <>
-    <List url={areasURL} type="meals" />
+    <List url={areasURL} type="countries" />
   </>
 );
 

@@ -5,7 +5,7 @@ const ingredientsURL =
 
 const Ingredients = () => (
   <>
-    <List url={ingredientsURL} type="meals" />
+    <List url={ingredientsURL} type="ingredients" />
   </>
 );
 

@@ -4,7 +4,12 @@ import { NavLink } from "react-router-dom";
 import Item from "./Item";
 
 class List extends React.Component {
-  state = { data: [], sites: 0, site: 0, type: this.props.type };
+  state = {
+    data: [],
+    sites: 0,
+    site: 0,
+    type: this.props.type === "categories" ? "categories" : "meals",
+  };
   componentDidMount() {
     fetch(this.props.url).then((response) =>
       response.json().then((data) =>
@@ -16,7 +21,7 @@ class List extends React.Component {
     );
   }
   render() {
-    const { site, sites, type } = this.state;
+    const { site, sites } = this.state;
     const data = this.state.data.slice(site * 12, site * 12 + 12);
     console.log(data);
     return (
@@ -84,7 +89,7 @@ class List extends React.Component {
           )}
         </nav>
         <div className="columns is-multiline mt-1">
-          {type === "categories"
+          {this.props.type === "categories"
             ? data.map((category) => (
                 <NavLink
                   className="column is-one-third"
@@ -97,30 +102,41 @@ class List extends React.Component {
                   />
                 </NavLink>
               ))
-            : type === "meals"
-            ? data.map((meal) => (
+            : this.props.type === "countries"
+            ? data.map((country) => (
+                <NavLink
+                  className="column is-one-fifth"
+                  to={"/country/" + country.strArea}
+                  key={country.strArea}
+                >
+                  <Item title={country.strArea} />
+                </NavLink>
+              ))
+            : this.props.type === "ingredients"
+            ? data.map((ingredient) => (
                 <NavLink
                   className="column is-one-quarter"
-                  to={
-                    meal.strMeal
-                      ? "/meal/" + meal.strMeal
-                      : meal.strIngredient
-                      ? "/ingredient/" + meal.strIngredient
-                      : "/country/" + meal.strArea
-                  }
-                  key={meal.idMeal || meal.idIngredient || meal.strArea}
+                  to={"/ingredient/" + ingredient.strIngredient}
+                  key={ingredient.idIngredient}
                 >
                   <Item
-                    title={meal.strMeal || meal.strIngredient || meal.strArea}
+                    title={ingredient.strIngredient}
                     imgURL={
-                      !meal.strArea
-                        ? meal.strMealThumb ||
-                          "https://www.themealdb.com/images/ingredients/" +
-                            meal.strIngredient +
-                            ".png"
-                        : null
+                      "https://www.themealdb.com/images/ingredients/" +
+                      ingredient.strIngredient +
+                      ".png"
                     }
                   />
+                </NavLink>
+              ))
+            : this.props.type === "meals"
+            ? data.map((meal) => (
+                <NavLink
+                  className="column is-one-third"
+                  to={"/meal/" + meal.strMeal}
+                  key={meal.idMeal}
+                >
+                  <Item title={meal.strMeal} imgURL={meal.strMealThumb} />
                 </NavLink>
               ))
             : null}
