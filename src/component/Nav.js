@@ -31,9 +31,6 @@ const Nav = () => {
         <NavLink className="navbar-item" to="/ingredients">
           Ingredients
         </NavLink>
-        <NavLink className="navbar-item" to="/find">
-          Find
-        </NavLink>
       </div>
     </nav>
   );
