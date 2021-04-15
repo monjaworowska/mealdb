@@ -1,3 +1,3 @@
 # https://monjaworowska.github.io/mealdb/
 
-React, Bulma
+React, Bulma, TheMealDB API
