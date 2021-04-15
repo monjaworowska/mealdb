@@ -23,7 +23,6 @@ class List extends React.Component {
   render() {
     const { site, sites } = this.state;
     const data = this.state.data.slice(site * 12, site * 12 + 12);
-    console.log(data);
     return (
       <>
         <nav className="pagination is-centered is-small">
@@ -133,7 +132,7 @@ class List extends React.Component {
             ? data.map((meal) => (
                 <NavLink
                   className="column is-one-third"
-                  to={"/meal/" + meal.strMeal}
+                  to={"/meal/" + meal.idMeal}
                   key={meal.idMeal}
                 >
                   <Item title={meal.strMeal} imgURL={meal.strMealThumb} />

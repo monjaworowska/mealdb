@@ -1,4 +1,4 @@
-const Item = ({ title, imgURL = null }) => {
+const Item = ({ title = "", imgURL = null }) => {
   return (
     <div className="card">
       <header className="card-header">

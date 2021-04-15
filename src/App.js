@@ -6,6 +6,7 @@ import Category from "./view/Category";
 import Ingredients from "./view/Ingredients";
 import Ingredient from "./view/Ingredient";
 import Country from "./view/Country";
+import Meal from "./view/Meal";
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
           <Route path="/country/:country" component={Country} />
           <Route path="/ingredients" component={Ingredients} />
           <Route path="/ingredient/:ingredient" component={Ingredient} />
+          <Route path="/meal/:id" component={Meal} />
         </Switch>
       </div>
     </BrowserRouter>
